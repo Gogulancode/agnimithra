@@ -8,7 +8,9 @@ import {
 } from "react-icons/fi";
 import PageHero from "../components/PageHero";
 import SectionEyebrow from "../components/SectionEyebrow";
-import { company, backgrounds } from "../data/site";
+import AboutImageSlider from "../components/AboutImageSlider";
+import ClientsStrip from "../components/ClientsStrip";
+import TestimonialsSection from "../components/TestimonialsSection";
 
 export default function About() {
   const points = [
@@ -23,31 +25,49 @@ export default function About() {
       <PageHero title="About Us" breadcrumb={[{ label: "About Us" }]} />
 
       <section className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-16 lg:py-20 grid lg:grid-cols-2 gap-10 items-center">
-          <div className="relative rounded-2xl overflow-hidden shadow-soft min-h-[400px]">
-            <img
-              src={backgrounds.aboutFurnace}
-              alt="Industrial furnace"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          </div>
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 py-16 lg:py-20 grid lg:grid-cols-[1fr_1.2fr] gap-10 items-start">
+          <AboutImageSlider className="aspect-square lg:sticky lg:top-24" />
           <div>
             <SectionEyebrow>Who We Are</SectionEyebrow>
             <h2 className="mt-4 font-display text-3xl md:text-4xl font-bold text-brand-navy leading-tight">
               Building Strength With <span className="text-brand-red">Quality &amp; Trust</span>
             </h2>
-            <p className="mt-6 text-slate-600 leading-relaxed">
-              {company.name} is a trusted supplier and dealer of all kinds of refractory
-              materials and industrial solutions. We serve steel, cement, foundry, glass
-              and thermal industries across India.
-            </p>
-            <p className="mt-3 text-slate-600 leading-relaxed">
-              Backed by years of experience and strong partnerships with leading
-              manufacturers, we deliver products that perform reliably in the most
-              demanding conditions.
-            </p>
 
-            <ul className="mt-6 space-y-3">
+            <div className="mt-6 space-y-4 text-slate-600 leading-relaxed">
+              <p>
+                At Agnimitra Refractories, we bring extensive industry experience and
+                deep technical knowledge in the field of refractory materials and
+                industrial consumables. We are committed to delivering reliable,
+                high-quality refractory solutions that meet the demanding requirements
+                of steel plants, foundries, rolling mills, and various high-temperature
+                industries.
+              </p>
+              <p>
+                We deal in a complete range of refractory materials including castables,
+                ramming mass, gunning mass, fire bricks, insulation products, ceramic
+                fiber products, and other allied refractory consumables. In addition to
+                refractories, we also supply industrial mechanical items and related
+                consumables to support smooth plant operations.
+              </p>
+              <p>
+                Our focus is on quality, consistency, and timely delivery. With a strong
+                understanding of customer requirements and industrial applications, we
+                strive to provide products that ensure durability, thermal efficiency,
+                and operational performance.
+              </p>
+              <p>
+                At Agnimitra Refractories, customer satisfaction is at the core of
+                everything we do. We believe in building long-term relationships through
+                dependable service, competitive pricing, and a commitment to excellence.
+              </p>
+              <p>
+                Whether it is a small requirement or bulk industrial supply, we ensure
+                prompt response, reliable sourcing, and professional support for every
+                customer.
+              </p>
+            </div>
+
+            <ul className="mt-8 space-y-3">
               {points.map((p) => (
                 <li key={p} className="flex items-start gap-2 text-slate-700">
                   <FiCheckCircle className="text-brand-red mt-1 shrink-0" />
@@ -97,6 +117,10 @@ export default function About() {
           ))}
         </div>
       </section>
+
+      <ClientsStrip />
+
+      <TestimonialsSection />
 
       <section className="bg-brand-navy text-white">
         <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12 flex flex-col md:flex-row items-center justify-between gap-6">

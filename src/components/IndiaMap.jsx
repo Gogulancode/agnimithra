@@ -26,11 +26,8 @@ function load() {
 }
 
 // The package's india.svg uses viewBox 0 0 612 696.
-// Approximate pixel positions for our office cities on that viewBox:
-const PINS = [
-  { name: "Mumbai", x: 105, y: 405 },
-  { name: "Hyderabad", x: 215, y: 460 },
-];
+// Approximate pixel positions for our office city on that viewBox:
+const PINS = [{ name: "Mumbai", x: 105, y: 405 }];
 
 export default function IndiaMap() {
   const [svg, setSvg] = useState(null);

@@ -16,14 +16,21 @@ import {
   FiTool,
   FiSettings,
   FiPackage,
-  FiMessageCircle,
   FiPlus,
   FiMinus,
   FiPhone,
-  FiCheckCircle,
+  FiBox,
+  FiCloud,
+  FiGrid,
+  FiLayers,
+  FiDroplet,
 } from "react-icons/fi";
 import SectionEyebrow from "../components/SectionEyebrow";
 import BrochureButton from "../components/BrochureButton";
+import AboutImageSlider from "../components/AboutImageSlider";
+import ProcessSection from "../components/ProcessSection";
+import TestimonialsSection from "../components/TestimonialsSection";
+import ClientsStrip from "../components/ClientsStrip";
 import {
   company,
   heroSlides,
@@ -32,10 +39,6 @@ import {
   whyChooseUs,
   stats,
   services,
-  processSteps,
-  testimonials,
-  clients,
-  commitments,
   faqs,
   industries,
   backgrounds,
@@ -55,6 +58,17 @@ const whyIcons = {
   tag: FiTag,
   support: FiLifeBuoy,
   globe: FiGlobe,
+};
+
+const productIcons = {
+  "refractory-castables": FiBox,
+  "gunning-mass": FiCloud,
+  "ramming-mass": FiPackage,
+  "fire-bricks": FiGrid,
+  mortars: FiLayers,
+  "insulation-materials": FiShield,
+  "industrial-oils": FiDroplet,
+  "industrial-consumables": FiTool,
 };
 
 function Hero() {
@@ -159,39 +173,28 @@ function AboutPreview() {
             With <span className="text-brand-red">Quality &amp; Trust</span>
           </h2>
           <p className="mt-6 text-slate-600 leading-relaxed">
-            Agni Mithra is a trusted supplier and dealer of all kinds of refractory
-            materials and industrial solutions.
+            Agni Mithra brings extensive industry experience and deep technical
+            knowledge in refractory materials and industrial consumables — supplying
+            steel plants, foundries, rolling mills and other high-temperature
+            industries across India.
           </p>
           <p className="mt-4 text-slate-600 leading-relaxed">
-            We focus on delivering quality products, timely supply and dependable service
-            to industrial clients across India.
+            From castables, ramming mass and gunning mass to fire bricks, insulation
+            and ceramic fibre products, we deliver a complete refractory range —
+            backed by reliable sourcing, competitive pricing and prompt support for
+            every customer.
           </p>
 
-          <div className="mt-8 grid sm:grid-cols-2 gap-5">
-            <div className="flex items-start gap-3">
-              <span className="w-11 h-11 rounded-md bg-white shadow-card flex items-center justify-center text-brand-red text-xl">
-                <FiUsers />
-              </span>
-              <div>
-                <div className="uppercase text-xs tracking-widest text-brand-red font-semibold">
-                  Proprietor
-                </div>
-                <div className="font-semibold text-brand-navy mt-1">
-                  {company.proprietor}
-                </div>
+          <div className="mt-8 flex items-start gap-3">
+            <span className="w-11 h-11 rounded-md bg-white shadow-card flex items-center justify-center text-brand-red text-xl">
+              <FiAward />
+            </span>
+            <div>
+              <div className="uppercase text-xs tracking-widest text-brand-red font-semibold">
+                Our Commitment
               </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="w-11 h-11 rounded-md bg-white shadow-card flex items-center justify-center text-brand-red text-xl">
-                <FiAward />
-              </span>
-              <div>
-                <div className="uppercase text-xs tracking-widest text-brand-red font-semibold">
-                  Our Commitment
-                </div>
-                <div className="font-semibold text-brand-navy mt-1">
-                  Quality products with excellent service.
-                </div>
+              <div className="font-semibold text-brand-navy mt-1">
+                Quality, consistency and on-time delivery — for every order.
               </div>
             </div>
           </div>
@@ -201,13 +204,7 @@ function AboutPreview() {
           </Link>
         </div>
 
-        <div className="relative rounded-2xl overflow-hidden shadow-soft min-h-[360px]">
-          <img
-            src={backgrounds.aboutPlant}
-            alt="Industrial plant at dusk"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
+        <AboutImageSlider className="aspect-[4/5] lg:aspect-auto lg:h-[460px]" />
       </div>
     </section>
   );
@@ -244,46 +241,64 @@ function ProductsCarousel() {
         <div className="relative">
           <div
             ref={scrollerRef}
-            className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-3 [&::-webkit-scrollbar]:hidden"
+            className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 pt-2 [&::-webkit-scrollbar]:hidden"
             style={{ scrollbarWidth: "none" }}
           >
-            {products.map((p) => (
-              <Link
-                to={`/products/${p.slug}`}
-                key={p.slug}
-                data-card
-                className="snap-start shrink-0 w-[200px] sm:w-[220px] bg-white rounded-xl border border-slate-100 shadow-card hover:shadow-soft transition-shadow group overflow-hidden"
-              >
-                <div className="aspect-square bg-brand-gray overflow-hidden">
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                  />
-                </div>
-                <div className="p-4 text-center">
-                  <span className="inline-flex w-10 h-10 -mt-9 mb-2 rounded-full bg-brand-navy text-brand-red items-center justify-center text-lg shadow-soft">
-                    <FiBriefcase />
-                  </span>
-                  <h3 className="text-sm font-bold uppercase tracking-wide text-brand-navy leading-tight">
-                    {p.name}
-                  </h3>
-                </div>
-              </Link>
-            ))}
+            {products.map((p) => {
+              const Icon = productIcons[p.slug] || FiBriefcase;
+              return (
+                <Link
+                  to={`/products/${p.slug}`}
+                  key={p.slug}
+                  data-card
+                  className="group snap-start shrink-0 w-[80%] sm:w-[calc((100%-20px)/2)] md:w-[calc((100%-40px)/3)] lg:w-[calc((100%-80px)/5)] bg-white rounded-2xl border border-slate-100 shadow-card hover:shadow-soft hover:-translate-y-1 transition-all duration-300 overflow-hidden relative"
+                >
+                  {/* Top red accent */}
+                  <div className="absolute inset-x-0 top-0 h-1 bg-brand-red origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+
+                  {/* Image */}
+                  <div className="relative aspect-[4/3] bg-brand-gray overflow-hidden">
+                    <img
+                      src={p.image}
+                      alt={p.name}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    {/* Soft bottom gradient for text legibility on busy images */}
+                    <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/20 to-transparent" />
+                    {/* Floating icon badge */}
+                    <span className="absolute bottom-3 right-3 w-11 h-11 rounded-full bg-white shadow-card flex items-center justify-center text-brand-red text-lg ring-2 ring-white group-hover:bg-brand-red group-hover:text-white transition-colors">
+                      <Icon />
+                    </span>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-5">
+                    <h3 className="font-display font-bold text-brand-navy text-base leading-tight group-hover:text-brand-red transition-colors">
+                      {p.name}
+                    </h3>
+                    <p className="mt-1.5 text-xs text-slate-500 leading-relaxed line-clamp-2 min-h-[2.4em]">
+                      {p.short}
+                    </p>
+                    <span className="mt-3 inline-flex items-center gap-1 text-brand-red font-semibold text-xs uppercase tracking-wider group-hover:gap-2 transition-all">
+                      View Details <FiArrowRight />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
 
           <button
             onClick={() => scrollBy(-1)}
             aria-label="Previous"
-            className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-card border border-slate-100 items-center justify-center text-brand-navy hover:text-brand-red"
+            className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-card border border-slate-100 items-center justify-center text-brand-navy hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors z-10"
           >
             <FiChevronLeft />
           </button>
           <button
             onClick={() => scrollBy(1)}
             aria-label="Next"
-            className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-card border border-slate-100 items-center justify-center text-brand-navy hover:text-brand-red"
+            className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-card border border-slate-100 items-center justify-center text-brand-navy hover:bg-brand-red hover:text-white hover:border-brand-red transition-colors z-10"
           >
             <FiChevronRight />
           </button>
@@ -331,8 +346,8 @@ const serviceIcons = {
 
 function StatsStrip() {
   return (
-    <section className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 -mt-10 lg:-mt-12 relative z-10">
+    <section className="bg-white pt-10 lg:pt-14 pb-4">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 bg-brand-navy text-white rounded-2xl shadow-soft overflow-hidden">
           {stats.map((s, i) => (
             <div
@@ -448,174 +463,6 @@ function IndustriesPreview() {
   );
 }
 
-function ProcessSection() {
-  return (
-    <section className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 py-16 lg:py-20">
-        <div className="text-center mb-12">
-          <div className="flex justify-center">
-            <SectionEyebrow>How We Work</SectionEyebrow>
-          </div>
-          <h2 className="mt-4 font-display text-3xl md:text-4xl font-bold text-brand-navy">
-            A Simple, Reliable Buying Journey
-          </h2>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-          {processSteps.map((step, i) => (
-            <div key={step.step} className="relative">
-              <div className="bg-brand-gray rounded-xl p-6 h-full">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="font-display text-3xl font-bold text-brand-red">
-                    {step.step}
-                  </span>
-                  <span className="flex-1 h-[2px] bg-brand-red/30" />
-                </div>
-                <h3 className="font-display text-lg font-bold text-brand-navy">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                  {step.body}
-                </p>
-              </div>
-              {i !== processSteps.length - 1 && (
-                <FiArrowRight className="hidden lg:block absolute -right-4 top-1/2 -translate-y-1/2 text-brand-red text-2xl" />
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CommitmentSection() {
-  return (
-    <section
-      className="relative text-white"
-      style={{
-        background:
-          `linear-gradient(rgba(14,36,64,0.92), rgba(14,36,64,0.92)), url('${backgrounds.commitment}') center/cover`,
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 py-16 lg:py-20">
-        <div className="max-w-2xl">
-          <div className="flex">
-            <SectionEyebrow>Our Commitment</SectionEyebrow>
-          </div>
-          <h2 className="mt-4 font-display text-3xl md:text-4xl font-bold">
-            Built on Quality, <span className="text-brand-red">Backed by Service</span>
-          </h2>
-          <p className="mt-3 text-slate-300">
-            Long-term reliability matters in refractories — and our processes
-            are built around it.
-          </p>
-        </div>
-
-        <div className="mt-10 grid sm:grid-cols-2 gap-x-10 gap-y-8">
-          {commitments.map((c) => (
-            <div key={c.title} className="flex items-start gap-4">
-              <span className="w-10 h-10 rounded-md bg-brand-red flex items-center justify-center shrink-0">
-                <FiCheckCircle className="text-white text-xl" />
-              </span>
-              <div>
-                <h3 className="font-display text-lg font-bold">{c.title}</h3>
-                <p className="mt-1 text-sm text-slate-300 leading-relaxed">
-                  {c.body}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function TestimonialsSection() {
-  const [active, setActive] = useState(0);
-  const total = testimonials.length;
-
-  useEffect(() => {
-    const id = setInterval(() => setActive((a) => (a + 1) % total), 6000);
-    return () => clearInterval(id);
-  }, [total]);
-
-  const t = testimonials[active];
-
-  return (
-    <section className="bg-brand-gray">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 py-16 lg:py-20">
-        <div className="text-center mb-10">
-          <div className="flex justify-center">
-            <SectionEyebrow>Testimonials</SectionEyebrow>
-          </div>
-          <h2 className="mt-4 font-display text-3xl md:text-4xl font-bold text-brand-navy">
-            What Our Customers Say
-          </h2>
-        </div>
-
-        <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-card p-8 md:p-10 relative">
-          <FiMessageCircle className="absolute -top-5 left-8 w-10 h-10 p-2 bg-brand-red text-white rounded-full" />
-          <p className="font-display text-lg md:text-xl text-brand-navy leading-relaxed italic">
-            &ldquo;{t.quote}&rdquo;
-          </p>
-          <div className="mt-6 flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-brand-navy text-brand-red flex items-center justify-center font-bold">
-              {t.name.charAt(0)}
-            </div>
-            <div>
-              <div className="font-semibold text-brand-navy">{t.name}</div>
-              <div className="text-xs text-slate-500">{t.company}</div>
-            </div>
-          </div>
-          <div className="mt-6 flex items-center gap-2">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                aria-label={`Show testimonial ${i + 1}`}
-                onClick={() => setActive(i)}
-                className={`h-2 rounded-full transition-all ${
-                  i === active ? "w-6 bg-brand-red" : "w-2 bg-slate-300"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ClientsStrip() {
-  return (
-    <section className="bg-white border-y border-slate-100">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 py-12">
-        <div className="text-center mb-8">
-          <SectionEyebrow align="center">Trusted By</SectionEyebrow>
-          <h3 className="mt-3 font-display text-xl md:text-2xl font-bold text-brand-navy">
-            Industry Leaders Across India
-          </h3>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
-          {clients.map((c) => (
-            <div
-              key={c}
-              className="flex items-center justify-center h-16 px-4 rounded-lg bg-brand-gray border border-slate-100 text-brand-navy font-display font-bold text-center text-sm hover:bg-brand-navy hover:text-white transition-colors"
-              title={c}
-            >
-              {c}
-            </div>
-          ))}
-        </div>
-        <p className="mt-6 text-center text-xs text-slate-500">
-          * Client names shown for reference. We work with steel, cement,
-          foundry and thermal industries across India.
-        </p>
-      </div>
-    </section>
-  );
-}
 
 function BrochureCTA() {
   return (
@@ -730,7 +577,6 @@ export default function Home() {
       <IndustriesPreview />
       <ProcessSection />
       <WhyChooseUs />
-      <CommitmentSection />
       <TestimonialsSection />
       <ClientsStrip />
       <BrochureCTA />

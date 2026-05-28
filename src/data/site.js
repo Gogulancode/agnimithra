@@ -9,14 +9,13 @@ export const company = {
   name: "Agni Mithra",
   tagline: "Premium Refractory & Industrial Solutions Provider",
   description:
-    "Agni Mithra is committed to delivering premium refractory solutions with quality, trust and excellence.",
-  proprietor: "Mr. Gogulan",
+    "Suppliers of High Performance Refractory Solutions for Steel, Foundry & Industrial Applications.",
+  tagline: "ENGINEERED TO ENDURE. BUILT TO PERFORM.",
   phones: ["+91 9000067700", "+91 7305028859"],
   email: "sales@agnimithra.in",
   whatsapp: "919000067700",
   addresses: [
     "We Work, Spectrum Tower, Mindspace, Chincholi Bunder Road, Off Link Road, Malad West, Mumbai - 400064",
-    "Bachupally, Hyderabad",
   ],
   socials: {
     linkedin: "#",
@@ -46,7 +45,6 @@ export const navLinks = [
     ],
   },
   { label: "Industries", to: "/industries" },
-  { label: "Gallery", to: "/gallery" },
   { label: "Contact Us", to: "/contact" },
 ];
 
@@ -376,25 +374,6 @@ export const services = [
   },
 ];
 
-export const commitments = [
-  {
-    title: "Quality at the Source",
-    body: "Every product is sourced from certified manufacturers and inspected before dispatch. We supply only materials that meet international refractory standards.",
-  },
-  {
-    title: "Research-Backed Selection",
-    body: "Our product range is curated based on field performance data — castables, masses and bricks proven across India's toughest operating environments.",
-  },
-  {
-    title: "Sustainability Focus",
-    body: "We promote energy-efficient insulation materials and long-life refractories that reduce material consumption and process emissions.",
-  },
-  {
-    title: "Customer-First Approach",
-    body: "Long-term partnerships matter more than one-off sales. Our team stays engaged from enquiry to after-sales — at every step.",
-  },
-];
-
 export const faqs = [
   {
     q: "Which industries do you supply to?",
@@ -422,18 +401,9 @@ export const faqs = [
 export const backgrounds = {
   aboutPlant: "/images/about/about-plant.jpg",
   aboutFurnace: "/images/about/about-furnace.jpg",
+  aboutGunning: "/images/about/Gunning%20Mass.jpeg",
+  aboutRamming: "/images/about/Ramming%20Mass.jpeg",
   pageHero: "/images/backgrounds/page-hero-bg.jpg",
-  commitment: "/images/backgrounds/commitment-bg.jpg",
   brochureCta: "/images/backgrounds/brochure-cta-bg.jpg",
 };
 
-export const gallery = [
-  "/images/gallery/gallery-1.jpg",
-  "/images/gallery/gallery-2.jpg",
-  "/images/gallery/gallery-3.jpg",
-  "/images/gallery/gallery-4.jpg",
-  "/images/gallery/gallery-5.jpg",
-  "/images/gallery/gallery-6.jpg",
-  "/images/gallery/gallery-7.jpg",
-  "/images/gallery/gallery-8.jpg",
-];

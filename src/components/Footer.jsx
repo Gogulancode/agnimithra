@@ -16,8 +16,22 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-14 grid gap-10 lg:grid-cols-[1.3fr_1fr_1.1fr_1.4fr_1fr]">
         {/* Logo + about */}
         <div>
-          <Logo height={104} invert />
-          <p className="mt-1 text-sm leading-relaxed text-slate-300">
+          <Logo height={104} invert className="justify-center" />
+
+          {/* Tagline divider with red center accent */}
+          <div className="mt-1 mx-auto flex items-center gap-2 max-w-[260px]">
+            <span className="h-px bg-white/30 flex-1" />
+            <span className="h-1 w-6 bg-brand-red rounded-sm" />
+            <span className="h-px bg-white/30 flex-1" />
+          </div>
+
+          {/* Brand tagline */}
+          <div className="mt-3 font-bold tracking-wider text-white text-sm leading-relaxed max-w-[260px] mx-auto text-center">
+            <div>ENGINEERED TO ENDURE.</div>
+            <div>BUILT TO PERFORM.</div>
+          </div>
+
+          <p className="mt-4 text-sm leading-relaxed text-slate-300">
             {company.description}
           </p>
           <div className="mt-5 flex items-center gap-3">
@@ -106,34 +120,40 @@ export default function Footer() {
           <h4 className="text-white font-semibold tracking-wide mb-4 uppercase text-sm">
             Contact Info
           </h4>
-          <ul className="space-y-3 text-sm text-slate-300">
+          <ul className="space-y-4 text-sm text-slate-300">
             <li className="flex items-start gap-3">
-              <span className="w-7 h-7 mt-0.5 rounded-md bg-brand-red flex items-center justify-center text-white">
+              <span className="w-9 h-9 shrink-0 rounded-md bg-brand-red flex items-center justify-center text-white text-base">
                 <FiPhone />
               </span>
-              <div>
+              <div className="leading-6 pt-1">
                 {company.phones.map((p) => (
                   <div key={p}>
-                    <a href={`tel:${p.replace(/\s+/g, "")}`} className="hover:text-white">
+                    <a
+                      href={`tel:${p.replace(/\s+/g, "")}`}
+                      className="hover:text-white"
+                    >
                       {p}
                     </a>
                   </div>
                 ))}
               </div>
             </li>
-            <li className="flex items-start gap-3">
-              <span className="w-7 h-7 mt-0.5 rounded-md bg-brand-red flex items-center justify-center text-white">
+            <li className="flex items-center gap-3">
+              <span className="w-9 h-9 shrink-0 rounded-md bg-brand-red flex items-center justify-center text-white text-base">
                 <FiMail />
               </span>
-              <a href={`mailto:${company.email}`} className="hover:text-white">
+              <a
+                href={`mailto:${company.email}`}
+                className="hover:text-white leading-6"
+              >
                 {company.email}
               </a>
             </li>
             <li className="flex items-start gap-3">
-              <span className="w-7 h-7 mt-0.5 rounded-md bg-brand-red flex items-center justify-center text-white">
+              <span className="w-9 h-9 shrink-0 rounded-md bg-brand-red flex items-center justify-center text-white text-base">
                 <FiMapPin />
               </span>
-              <div className="space-y-2">
+              <div className="leading-6 pt-1 space-y-2">
                 {company.addresses.map((a, i) => (
                   <div key={i}>{a}</div>
                 ))}
