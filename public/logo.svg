@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill="none">
+  <!-- Left peak of M -->
+  <path d="M70 320 L155 130 L210 130 L155 250 Z" fill="#0E2440"/>
+  <!-- Right peak of M -->
+  <path d="M430 320 L345 130 L290 130 L345 250 Z" fill="#0E2440"/>
+  <!-- Bottom-left trapezoid -->
+  <path d="M70 320 L120 250 L210 250 L160 320 Z" fill="#0E2440"/>
+  <!-- Bottom-right trapezoid -->
+  <path d="M430 320 L380 250 L290 250 L340 320 Z" fill="#0E2440"/>
+  <!-- Center flame -->
+  <path d="M250 195 C235 220 230 240 245 260 C235 248 240 232 250 222 C246 240 258 248 260 262 C272 252 270 232 262 218 C272 230 274 244 270 258 C282 248 286 230 278 212 C286 218 290 230 286 244 C294 230 290 210 278 200 C268 192 258 192 250 195 Z" fill="#E11D2A"/>
+
+  <!-- Wordmark: Agni Mithra -->
+  <text x="250" y="420" text-anchor="middle" font-family="Poppins, Inter, sans-serif" font-size="72" font-weight="700" fill="#0E2440">Agni <tspan fill="#E11D2A">Mithra</tspan></text>
+</svg>
