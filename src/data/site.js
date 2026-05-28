@@ -27,6 +27,14 @@ export const company = {
   brochureFilename: "Agnimithra_Brochure.pdf",
 };
 
+// Web3Forms config — handles the contact form submission.
+// Get a free access key at https://web3forms.com using sales@agnimithra.in.
+// The key is safe to expose in client code (rate-limited, tied to your email).
+export const web3forms = {
+  accessKey: "af8e2fbe-fc2d-49e2-953b-f511b9168e11",
+  cc: "", // optional: comma-separated CC emails, e.g. "gogulan@solutionsnext.in"
+};
+
 export const navLinks = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },

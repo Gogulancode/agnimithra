@@ -80,7 +80,10 @@ export default function ProductDetail() {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/contact" className="btn-primary">
+              <Link
+                to={`/contact?product=${product.slug}`}
+                className="btn-primary"
+              >
                 ENQUIRE NOW <FiArrowRight />
               </Link>
               <BrochureButton variant="outline" label="DOWNLOAD CATALOGUE" />
